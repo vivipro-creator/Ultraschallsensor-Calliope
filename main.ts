@@ -2,6 +2,42 @@
 namespace Ultraschallsensor {
 
     // ---------------------------------------------------------
+    //  EREIGNIS-BLÖCKE (EVENTS)
+    // ---------------------------------------------------------
+
+    /**
+     * Führt den enthaltenen Code aus, wenn Knopf A geklickt wird.
+     */
+    //% block="wenn Knopf A geklickt"
+    //% weight=120
+    //% blockAllowMultiple=1
+    //% handlerStatement=1
+    export function onButtonA(handler: () => void): void {
+        input.onButtonPressed(Button.A, handler);
+    }
+
+    /**
+     * Führt den enthaltenen Code aus, wenn Knopf B geklickt wird.
+     */
+    //% block="wenn Knopf B geklickt"
+    //% weight=115
+    //% blockAllowMultiple=1
+    //% handlerStatement=1
+    export function onButtonB(handler: () => void): void {
+        input.onButtonPressed(Button.B, handler);
+    }
+
+    /**
+     * Führt den enthaltenen Code dauerhaft in einer Schleife aus.
+     */
+    //% block="dauerhaft"
+    //% weight=110
+    //% handlerStatement=1
+    export function dauerhaft(handler: () => void): void {
+        basic.forever(handler);
+    }
+
+    // ---------------------------------------------------------
     //  BLOCK: Ultraschall Entfernung messen (C16)
     // ---------------------------------------------------------
 
@@ -11,9 +47,9 @@ namespace Ultraschallsensor {
     //% block="Entfernung (cm)"
     //% weight=100
     export function entfernung(): number {
-        // WICHTIG: Dies ist der Standard-Grove-Ultraschall-Aufruf
-        // Falls bei dir in JavaScript ein anderer Name steht,
-        // ändere die folgende Zeile entsprechend!
+        // WICHTIG:
+        // Falls dein funktionierender MakeCode-JavaScript-Code
+        // hier anders heißt, diese Zeile anpassen!
         return grove.measureInCentimeters(DigitalPin.C16);
     }
 
@@ -22,10 +58,10 @@ namespace Ultraschallsensor {
     // ---------------------------------------------------------
 
     /**
-     * Beide Motoren mit einstellbarer Geschwindigkeit starten.
+     * Motor M0 & M1 an mit einstellbarer Geschwindigkeit (in Prozent).
      * Geschwindigkeit: -100 (rückwärts) bis +100 (vorwärts)
      */
-    //% block="fahre vorwärts mit Geschwindigkeit %speed"
+    //% block="Motor M0 & M1 an mit %speed Prozent"
     //% speed.min=-100 speed.max=100 speed.defl=60
     //% weight=90
     export function drive(speed: number): void {
@@ -68,7 +104,7 @@ namespace Ultraschallsensor {
     // ---------------------------------------------------------
 
     /**
-     * Wartet eine einstellbare Zeit in Millisekunden
+     * Wartet eine einstellbare Zeit in Millisekunden.
      */
     //% block="warte %dauer ms"
     //% dauer.min=0 dauer.max=5000 dauer.defl=1000
