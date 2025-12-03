@@ -1,0 +1,13 @@
+{
+  "name": "Ultraschallsensor Calliope",
+  "version": "0.0.1",
+  "description": "Einzelne Motor- und Ultraschallblöcke für Calliope-Roboter.",
+  "dependencies": {
+    "core": "*",
+    "grove": "github:Seeed-Studio/pxt-grove"
+  },
+  "files": [
+    "main.ts"
+  ],
+  "public": true
+}
